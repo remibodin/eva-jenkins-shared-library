@@ -5,6 +5,10 @@ def call(String webhookURL, String imageURL) {
     description += "**Branch**: " + env.PLASTICSCM_BRANCH + "\n"
     description += "**Builder**: " + env.NODE_NAME + "\n"
     description += "**Time**: " + currentBuild.durationString + "\n"
+    if (env.notification != null)
+    {
+        description += env.notification
+    }
     
     discordSend customUsername:"CI", 
         customAvatarUrl:"https://img.freepik.com/premium-photo/cute-smiling-robot_553012-14121.jpg", 
